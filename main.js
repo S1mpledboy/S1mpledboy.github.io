@@ -6,6 +6,7 @@ var upPressed = false;
 var game_area = document.getElementById("game_area");
 var ctx = game_area.getContext("2d");
 
+
 var playerImg = new Image();
 playerImg.src = "ships/player_ship.png";
 
@@ -16,6 +17,7 @@ var bossParams = {
 	health: document.getElementById("health"),
 	speed : 4 
 };
+
 console.log(bossParams);
 
 
@@ -158,8 +160,10 @@ var playerBullet = new PlayerBullet();
 var bossBullets = new Array();
 
 function game_areaAdaptationToScreen(){
+	if(game_area){
 	game_area.width = window.innerWidth;
 	game_area.height = window.innerHeight;
+	}
 };
 
 document.addEventListener("keydown", keyDownInterpreter);
@@ -294,7 +298,8 @@ function draw(){
         }
         else if(upPressed && playerY>0) {
             playerY -= 5;
-        }
+        };
+
     playerBulletHitBox = [playerBullet.X, playerBullet.X+playerBullet.bullet.width, playerBullet.Y, playerBullet.Y+playerBullet.bullet.height];
     bossHitBox = [Gorg_Hunter.X, Gorg_Hunter.X+Gorg_Hunter.img.width ,Gorg_Hunter.Y , Gorg_Hunter.Y+Gorg_Hunter.img.height-100];
     Gorg_Hunter.changeDirection();
