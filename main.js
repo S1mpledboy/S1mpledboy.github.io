@@ -160,10 +160,8 @@ var playerBullet = new PlayerBullet();
 var bossBullets = new Array();
 
 function game_areaAdaptationToScreen(){
-	if(game_area){
 	game_area.width = window.innerWidth;
 	game_area.height = window.innerHeight;
-	}
 };
 
 document.addEventListener("keydown", keyDownInterpreter);
@@ -256,7 +254,12 @@ function Hit(projectTileHitBox, hittedObjectHitBox){
 		return false
 	}
 };
-
+function play_music() {
+	console.log('playing music')
+	var music = document.getElementById('music')
+	music.loop = true;
+	music.play();
+}
 function bossTick(){
 	playerHitBox = [playerX, playerX+playerImg.width, playerY, playerY+playerImg.height];
 	if (bossBullets != null) {
@@ -284,6 +287,7 @@ function draw(){
 		alert("You WIN!!!!");
 		alert("Beat that badass again?");
 		window.location.reload();
+
 	}
 	else {
 		ctx.clearRect(0, 0, game_area.width, game_area.height);
