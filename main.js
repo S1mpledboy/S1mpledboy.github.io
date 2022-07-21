@@ -6,6 +6,7 @@ var upPressed = false;
 var game_area = document.getElementById("game_area");
 var ctx = game_area.getContext("2d");
 
+
 var playerImg = new Image();
 playerImg.src = "ships/player_ship.png";
 
@@ -13,24 +14,12 @@ var bossParams = {
 	width: 890,
 	height: 317,
 	img_src: "ships/Boss_1.png",
-	health: document.getElementById("health") 
+	health: document.getElementById("health"),
+	speed : 4 
 };
+
 console.log(bossParams);
-var leftBulletParams = {
-	src : "sprites/fire/BossBullet(left).png",
-	dx : 2,
-	dy : 3
-};
-var rightBulletParams = {
-	src : "sprites/fire/BossBullet(right).png",
-	dx : -2,
-	dy : 3
-}
-var centerBulletParams = {
-	src : "sprites/fire/BossBullet(center).png",
-	dx : 0,
-	dy : 3
-}
+
 
 window.onload = game_areaAdaptationToScreen();
 function randInt(max){
@@ -46,6 +35,7 @@ class Boss{
 		this.width = params.width;
 		this.height = params.height;
 		this.health = params.health.value;
+		this.speed = params.speed
 	}
 	drawBoss(){
 		ctx.drawImage(this.img, this.X, this.Y)
@@ -57,14 +47,50 @@ class Boss{
 			document.getElementById("health").value -= 5;
 		}
 	}
+	moveBoss(){
+		this.X = this.X+this.speed
+	}
+	changeDirection(){
+		if (this.X >= game_area.width-this.img.width||this.X<0) {
+			this.speed = this.speed*-1
+		}
+	}
+}
+var Gorg_Hunter = new Boss(bossParams);
+var bulletBossOffsetY = Gorg_Hunter.height/2.5;
+var bulletBossOffsetX = Gorg_Hunter.width/2.2;
+var bossHitBox;
+var bossHitted;
+var bossBulettHitBox;
+
+var leftBulletParams = {
+	src : "sprites/fire/BossBullet(left).png",
+	dx : 2,
+	dy : 3,
+	emmitplaceX : game_area.width/4+bulletBossOffsetX,
+	emmitplaceY : game_area.height/10+bulletBossOffsetY
+};
+var rightBulletParams = {
+	src : "sprites/fire/BossBullet(right).png",
+	dx : -2,
+	dy : 3,
+	emmitplaceX : game_area.width/4+bulletBossOffsetX,
+	emmitplaceY : game_area.height/10+bulletBossOffsetY
+}
+var centerBulletParams = {
+	src : "sprites/fire/BossBullet(center).png",
+	dx : 0,
+	dy : 3,
+	emmitplaceX : game_area.width/4+bulletBossOffsetX,
+	emmitplaceY : game_area.height/10+bulletBossOffsetY
 }
 
 class BossBullet{
 	bullet = new Image();
-	defaultX = game_area.width/4+bulletBossOffsetX;
-	defaultY =  game_area.height/10+bulletBossOffsetY;
-	X = this.defaultX;
-	Y = this.defaultY;
+	emmitplaceX;
+	emmitplaceY;
+	X;
+	Y;
 	dx;
 	dy;
 	hitBox = new Array();
@@ -72,6 +98,10 @@ class BossBullet{
 		this.bullet.src = params.src;
 		this.dx = params.dx;
 		this.dy = params.dy;
+		this.emmitplaceX = params.emmitplaceX;
+		this.emmitplaceY = params.emmitplaceY;
+		this.X = this.emmitplaceX;
+		this.Y = this.emmitplaceY;
 	}
 
 	moveBullet(){
@@ -124,12 +154,6 @@ class PlayerBullet {
 
 var playerX = game_area.width/2;
 var playerY = game_area.height-150;
-var Gorg_Hunter = new Boss(bossParams);
-var bulletBossOffsetY = Gorg_Hunter.height/2.5;
-var bulletBossOffsetX = Gorg_Hunter.width/2.2;
-var bossHitBox;
-var bossHitted;
-var bossBulettHitBox;
 var playerHitbox;
 var playerHitted;
 var playerBullet = new PlayerBullet();
@@ -174,25 +198,33 @@ function keyUpInterpreter(e) {
     }
 }
 
+function changeEmmitPlace(bossX,bulletparams) {
+	bulletparams.emmitplaceX = bossX+bulletBossOffsetX
+	return bulletparams;
+}
 
 function createBossBullet(){
-	var setAttackType = randInt(3);
-	switch(setAttackType) {
+	var attackPalce = randInt(3);
+	switch(attackPalce) {
 		case 0 : 
-			var bossBulletLeft = new BossBullet(leftBulletParams);
+			changeEmmitPlace(Gorg_Hunter.X, leftBulletParams);
+			console.log(leftBulletParams)
+			let bossBulletLeft = new BossBullet(leftBulletParams);
 			bossBullets.push(bossBulletLeft);
 			return bossBullets;
 			break;
 		case 1 : 
-			var bossBulletCenter = new BossBullet(centerBulletParams);
+			changeEmmitPlace(Gorg_Hunter.X, centerBulletParams);
+			let bossBulletCenter = new BossBullet(centerBulletParams);
 			bossBullets.push(bossBulletCenter);
 			return bossBullets;
 			break;
 		case 2 : 
-		var bossBulletRight = new BossBullet(rightBulletParams);
-		bossBullets.push(bossBulletRight);
-		return bossBullets;
-		break;
+			changeEmmitPlace(Gorg_Hunter.X, rightBulletParams);
+			let bossBulletRight = new BossBullet(rightBulletParams);
+			bossBullets.push(bossBulletRight);
+			return bossBullets;
+			break;
 	}
 };
 
@@ -222,10 +254,15 @@ function Hit(projectTileHitBox, hittedObjectHitBox){
 		return false
 	}
 };
-
+function play_music() {
+	console.log('playing music')
+	var music = document.getElementById('music')
+	music.loop = true;
+	music.play();
+}
 function bossTick(){
 	playerHitBox = [playerX, playerX+playerImg.width, playerY, playerY+playerImg.height];
-	if (bossBullets !== null) {
+	if (bossBullets != null) {
 		bossBullets.forEach( function(element){
 			element.moveBullet();
 			bossBulletDelete();
@@ -239,7 +276,7 @@ function bossTick(){
 		}
 	}
 	requestAnimationFrame(bossTick);
-}
+};
 
 function draw(){
 	if (playerHitted){
@@ -250,6 +287,7 @@ function draw(){
 		alert("You WIN!!!!");
 		alert("Beat that badass again?");
 		window.location.reload();
+
 	}
 	else {
 		ctx.clearRect(0, 0, game_area.width, game_area.height);
@@ -264,9 +302,13 @@ function draw(){
         }
         else if(upPressed && playerY>0) {
             playerY -= 5;
-        }
+        };
+
     playerBulletHitBox = [playerBullet.X, playerBullet.X+playerBullet.bullet.width, playerBullet.Y, playerBullet.Y+playerBullet.bullet.height];
     bossHitBox = [Gorg_Hunter.X, Gorg_Hunter.X+Gorg_Hunter.img.width ,Gorg_Hunter.Y , Gorg_Hunter.Y+Gorg_Hunter.img.height-100];
+    Gorg_Hunter.changeDirection();
+    Gorg_Hunter.moveBoss();
+
     bossHitted = Hit(playerBulletHitBox ,bossHitBox);
     playerBullet.onHit(bossHitted);
     Gorg_Hunter.onHit(bossHitted);
@@ -278,5 +320,5 @@ function draw(){
 };
 
 draw();
-setInterval(createBossBullet,500)
+setInterval(createBossBullet,300)
 bossTick();
