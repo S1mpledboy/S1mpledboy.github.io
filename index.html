@@ -1,16 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://smtpjs.com/v3/smtp.js">
+    </script>
+    <script src="js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <title>Document</title>
 </head>
 <body>
-	<button onclick='play_music()'>Play music</button>
-	<audio src = 'videoplayback (2) (online-audio-converter.com).mp3' id="music"></audio>
-	<progress id="health" value="100" max="100" ></progress>
-	<canvas id="game_area" >
-	</canvas>
+    <header>
+        <nav class="menu">
+            <ul class = "menu_list">
+                <li><a href="#start">Główna</a></li>
+                <li><a href="#road_map">Droga rozwoju</a></li>
+                <li><a href="#team">Nasz zespół</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id = "start">
+        <p class="intro_title">​Your Visual Independence</p>
+        <p class="intro_txt"> Aplikacja, która jest oczami osób niewidomych i słabowidzących</p>
+        <button class = "introbutton"><span class = "btn_txt">Skontaktuj się z nami</span></button>
+    </div>
+    <article id="problematics">
+        <h4 id="problematic_head" class=" wow animate__animated animate__fadeInUp">Jaki problem adresujemy?</h4>
+        <div class="galery wow animate__animated animate__fadeInUp">        
+            <div class="galery_item">
+                <img src="img/problem1.jpg" alt="" class="problematic_img">
+                <h6 class="problems_headline">​5 mln</h6>
+                <span class="problems_txt">​Dokładnie tyle Polaków mierzy się z problemem pełnej lub częściowej utraty wzroku</span>
+            </div>
+            <div class="galery_item">
+                <img src="img/problem2.jpg" alt="" class="problematic_img">
+                <h6 class="problems_headline">​Skutki uboczne chorób</h6>
+                <span class="problems_txt">​Ametropia, zwyrodnienie plamki żółtej, cukrzyca, zaćma, jaskra, oraz inne</span>
+            </div>
+            <div class="galery_item">
+                <img src="img/problem3.png" alt="" class="problematic_img">
+                <h6 class="problems_headline">​+64 tys. osób co roku</h6>
+                <span class="problems_txt">​Nigdy nie wiadomo, kto z Twoich bliskich znajomych stanie się częścią tej statystyki</span>
+            </div>
+        </div>
+    </article>
+    <article id="technologie">
+        <div class="tech_wrraper">
+                <h4 id="technologie_title">​Technologia</h4>
+                <p class="technologie_txt">​Aplikacja oparta na sztucznej inteligencji i sieciach neuronowych, które już dawno nie są z zakresu fantastyki</p>
+                <button class="technologie_btn">
+                    <span id="technologie_btn_txt">Skontaktuj się z nami</span>
+                </button>
+        </div>
+        <img id = "code_example" src="img/tech_code.jpeg" alt="technologie_code_example" class="wow animate__animated animate__fadeInRight">
+    </article>
+    <article id = "road_map">
+        <div id="road_map_title_wrraper">
+            <h4 id = "road_map_title">Droga rozwoju</h4>
+        </div>
+        <div id = "road_map_img_wrraper" alt="road_map_img" class="wow animate__animated animate__fadeInDown"></div>
+        <div id="road_map_content_wrraper">
+            <div id="road_map_content">
+                <div class="road_map_content_item">
+                    <img src="img/Circle_1.png" alt="" class="road_map_item_img">
+                    <h6 class="road_map_item_title">​Rekrutacja</h6>
+                    <p class="road_map_item_content">​Zatrudnienie specjalistów Podział obowiązków</p>
+                    <hr class="road_map_item_line">
+                    <p class="road_map_item_time">2-3 miesiące</p>
+                </div>
+                <div class="road_map_content_item">
+                    <img src="img/Circle_2.png" alt="" class="road_map_item_img">
+                    <h6 class="road_map_item_title">​Rekrutacja</h6>
+                    <p class="road_map_item_content">​Zatrudnienie specjalistów Podział obowiązków</p>
+                    <hr class="road_map_item_line">
+                    <p class="road_map_item_time">2-3 miesiące</p>
+                </div>
+                <div class="road_map_content_item">
+                    <img src="img/Circle_3.png" alt="" class="road_map_item_img">
+                    <h6 class="road_map_item_title">​Rekrutacja</h6>
+                    <p class="road_map_item_content">​Zatrudnienie specjalistów Podział obowiązków</p>
+                    <hr class="road_map_item_line">
+                    <p class="road_map_item_time">2-3 miesiące</p>
+                </div>
+                <div class="road_map_content_item">
+                    <img src="img/Circle_4.png" alt="" class="road_map_item_img">
+                    <h6 class="road_map_item_title">​Rekrutacja</h6>
+                    <p class="road_map_item_content">​Zatrudnienie specjalistów Podział obowiązków</p>
+                    <hr class="road_map_item_line">
+                    <p class="road_map_item_time">2-3 miesiące</p>
+                </div>
+                <div class="road_map_content_item">
+                    <img src="img/Circle_5.png" alt="" class="road_map_item_img">
+                    <h6 class="road_map_item_title">​Rekrutacja</h6>
+                    <p class="road_map_item_content">​Zatrudnienie specjalistów Podział obowiązków</p>
+                    <hr class="road_map_item_line">
+                    <p class="road_map_item_time">2-3 miesiące</p>
+                </div>
+                <div class="road_map_content_item">
+                    <img src="img/Circle_6.png" alt="" class="road_map_item_img">
+                    <h6 class="road_map_item_title">​Rekrutacja</h6>
+                    <p class="road_map_item_content">​Zatrudnienie specjalistów Podział obowiązków</p>
+                    <hr class="road_map_item_line">
+                    <p class="road_map_item_time">2-3 miesiące</p>
+                </div>
+            </div>
+        </div>
+    </article>
+    <article id="team">
+        <h4 class="team_title">Nasz zespół</h4>
+        <div class="team_details_wrraper wow animate__animated animate__fadeIn">
+            <div class="team_details_item">
+                <div class="team_img_wrraper">
+                    <img src="img/MO.jpg" alt="" class="team_img">
+                </div>
+                <h6 class="team_name">Makar Oliinyk</h6>
+                <p class="team_member_responsobility">IT</p>
+            </div>
+            <div class="team_details_item">
+                <div class="team_img_wrraper">
+                    <img src="img/TB.jpg" alt="" class="team_img">
+                </div>
+                <h6 class="team_name">Tetiana Berehova</h6>
+                <p class="team_member_responsobility">Analityka finansowa</p>
+            </div>
+            <div class="team_details_item">
+                <div class="team_img_wrraper">
+                    <img src="img/LK.jpg" alt="" class="team_img">
+                </div>
+                <h6 class="team_name">Liliia Karaban</h6>
+                <p class="team_member_responsobility">Marketing i komunikacja</p>
+            </div>
+        </div>
+    </article>
+    <article id="offer">
+        <h6 id="offer_title" class="wow animate__animated animate__fadeInDown animate__delay-2s">​Szukasz projektu, który ma zarówno duszę, jak i potencjał biznesowy? Zainwestuj w startup UVI i połącz przyjemne z pożytecznym</h6>
+        <div id="offer_content_wrraper" class="wow animate__animated animate__fadeIn">
+            <div class="offer_content_item"id='offer_img1'>
+                <span class="offer_content_txt">​Zyski po 1 roku działania aplikacji</span>
+            </div>
+            <div class="offer_content_item"id='offer_img2'>
+                <span class="offer_content_txt">​Tworzenie lepszej przyszłości</span>
+            </div>
+            <div class="offer_content_item"id='offer_img3'>
+                <span class="offer_content_txt">​Ulepszenie wizerunku Twojej firmy</span>
+            </div>
+        </div>
+    </article>
+    <article id="contact">
+        <div id="contact_content_wrraper">
+            <form>
+                <h6>Skontaktuj się z nami</h6>
+                <input type="text" id='name' placeholder="Imię" required>
+                <input type="text" id='surname' placeholder="Nazwisko"required>
+                <input type="text" id='mail'placeholder='Email' required>
+                <input type="text" id='number' placeholder="Numer telefonu">
+                <textarea name="massege" id="massege" rows="6" placeholder="Wiadomość"></textarea>
+                <div id="btn_wrraper">
+                    <button type="submit">Kontakt</button>
+                </div>
+            </form>
+        </div>
+        <div id="contact_img_wrraper">
+        </div>
+    </article>
+    <footer>
+        <h6>&copy; 2022 by UVI</h6>
+        <div class="footer_wrraper">
+            <nav class="menu_footer">
+                <ul class = "menu_list_footer">
+                    <li><a href="#start">Do góry</a></li>
+                    <li><a href="#road_map">Droga rozwoju</a></li>
+                    <li><a href="#team">Nasz zespół</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
 </body>
-<script src="main.js"></script>
-</html>	
+</html>

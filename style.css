@@ -1,24 +1,514 @@
-html,body{
-	margin: 0px;
-	padding: 0px;
-	max-width: 100%;
-	max-height: 100%;
-	overflow: hidden;
-	background-image: url(sprites/background/bg.jpg);
-	background-repeat: no-repeat;
-	background-size:cover;
-	z-index:-1;
+*{
+    font-family: 'Poppins', sans-serif;
 }
-#game_area
-{
-	max-width: 100vw;
-	max-height: 100vh;
-	position: relative;
-	margin: 0px;
-	padding: 0px;
-	
+body , header,html, nav{
+    margin: 0;
+    padding: 0;
 }
-#health
-{
-	width: 350px;
+:root{
+    --animate-duration: 2800ms;
+}
+nav{
+    width: 100%;
+    height:auto;
+    background-color: black;
+    position: relative;
+    overflow: hidden;
+    align-items: center;
+}
+.menu_list, .menu_list a {
+    height: fit-content;
+    margin: 0;
+    padding: 1%;
+    display: flex;
+    text-align: center;
+    flex-direction: row;
+    justify-content: space-evenly;
+    list-style-type: none;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    font-size: 1.5vw;
+    font-weight: 200;
+    font-style: normal;
+    line-height: normal;
+    text-decoration: none;
+}
+.menu_list li{
+    width: 100%;
+    display: inline-block;
+}
+header{
+    width: 100%;
+    position: absolute;
+    align-content: center;
+}
+#start{
+    height: 100vh;
+    width: 100%;
+    background-image:url("img/eye.jpg") ;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+
+}
+.intro_title{
+    width: 50%;
+    margin:  0 0 0 6.8vw;
+    padding: 0;
+    text-align: left;
+    justify-content: center;
+    float: left;
+    z-index: 1;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 4.333vw;
+    font-weight: bold;
+    font-style: normal;
+    letter-spacing: 0.417vw;
+    line-height: normal;
+}
+.intro_txt{
+    width: 25vw;
+    color: #fff;
+    font-family: Poppins;
+    font-size: 1.2vw;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 1.05px;
+    line-height: normal;
+    text-align: left;
+    align-self: flex-start;
+    margin: 2vw 0 0 7vw;
+
+}
+.introbutton{
+    z-index: 1;
+    width: 19vw;
+    min-width: 15vw;
+    height: 4.259vw;
+    min-height: 1vw;
+    background-color: #bada55;
+    border:none;
+    border-radius: 100px;
+    margin: 2vw 0 0 6vw;
+}
+span.btn_txt{
+    width: 11.458333333333334vw;
+    height: 1.71875vw;
+    color: #ffffff;
+    font-family: Poppins;
+    font-size:1.09375vw;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: normal;
+    line-height: normal;
+}
+#problematics{
+    height: 100vh;
+    width: 100%;
+}
+#problematic_head{
+    position: relative;
+    text-align: center;
+    margin: 10px 0;
+    width: 100%;
+    height: auto;
+    color: #000000;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.7083333333333335vw;
+    font-weight: 600;
+}
+.galery{
+    height: 90%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.galery_item{
+    width: 22.5vw;
+    height:  40.520833333333336vw;
+    background-color: #ffffff;
+    border-color: #000000;
+    border-style: outset;
+    border-width: 0.10416666666666667vw;
+    border-radius: 5.208333333333333vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.problems_headline,.problems_txt {
+    text-align: center;
+    margin-bottom: 3vw;
+    font-family: 'Poppins',sans-serif;
+}
+.problems_headline{
+    font-size: 1.5vw;
+    font-weight: 600;
+    letter-spacing: 0.2vw;
+}
+.problems_txt{
+    width: 19vw;
+    padding: 3%;
+    font-size: 1vw;
+    align-self: center;
+    letter-spacing: 0.085vw;
+    font-weight: 100;
+    
+}
+.problematic_img{
+    align-self: center;
+    width: 21vw ;
+    overflow: hidden;
+    object-fit: contain;
+    margin-top: 3%;
+    border-radius: 5.208333333333333vw 5.208333333333333vw 0  0;
+
+}
+#technologie{
+    height: 100vh;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#code_example{
+    position: relative;
+    align-self: center;
+    width: 40%;
+    height: 96%;
+    aspect-ratio: 1/1;
+    flex-grow: 1;
+}
+.tech_wrraper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+.technologie_txt{
+    font-family: 'Poppins';
+    font-size: 1.15vw;
+    font-weight: 300;
+    text-align: center;
+    width: 50%;
+    color: #fff;
+}
+#technologie_title{
+    margin: 0;
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 4vw;
+    text-align: center;
+    z-index: 1;
+    color: #fff;
+}
+.technologie_btn{
+    width:  21vw;
+    height: 2.7vw;
+    border: 1px solid #fcfcfc;
+    background-color: #000000;
+}
+span#technologie_btn_txt{
+    font-family: 'Poppins';
+    font-weight: 200;
+    font-size: 0.8vw;
+    color: #fcfcfc;
+}
+#road_map{
+    background-color: #000000;
+    display: grid;
+    grid-template-columns:20% 80%;
+    grid-auto-rows: minmax(15vw, auto);
+    width: 100%;
+    height: 150%;
+
+}
+#road_map_title_wrraper{
+    margin: 0;
+    grid-column: 1;
+    grid-row: 1/3;
+    background-color: #000000;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    justify-content: center;
+}
+#road_map_title{
+    writing-mode:vertical-rl;
+    height: 45vw;
+    letter-spacing: 0.5vw;
+    color:floralwhite;
+    transform: rotate(180deg);
+    font-family: 'Poppins';
+    font-size: 3.7vw;
+    margin: 0 0 1.5vw 2.7vw;
+}
+#road_map_img_wrraper{
+    grid-column: 2/-1;
+    grid-row:1;
+    justify-self:start;
+    width:100%;
+    height: 100%;
+    background-image:url("img/road_way.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+div#road_map_content{
+    grid-column: 2;
+    grid-row: 2;
+    display: grid;
+    justify-content: center;
+    height: 97.2%;
+    background-color: #fcfcfc;
+    grid-template-columns: repeat(3,auto);
+    grid-gap: 0.5vw;
+    grid-template-rows: repeat(2,auto);
+    padding: 0.5vw;
+    justify-content: space-around;
+}
+div.road_map_content_item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+img.road_map_item_img{
+    width: 13%;
+    aspect-ratio: 1/1;
+}
+h6.road_map_item_title{
+    font-family: 'Poppins';
+    font-size: 1vw;
+    font-weight: 600;
+    margin: 1vw 0 0.5vw 0;
+}
+p.road_map_item_content{
+    width: 70%;
+    text-align: center;
+    font-family: 'Poppins';
+    font-size: 0.7vw;
+    font-weight: 300;
+}
+hr.road_map_item_line{
+    width: 100%;
+}
+p.road_map_item_time{
+    font-family: 'Poppins';
+    font-size: 0.7vw;
+}
+#team{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin:0;
+    padding: 0;
+    width: 100%;
+    height: 80vh;
+}
+.team_title{
+    text-align: center;
+    font-family: 'Poppins';
+    font-size: 3.9vw;
+    margin: 0%;
+    margin-bottom: 3%;
+}
+div.team_details_wrraper{
+    display: flex;
+    width: 100%;
+    height: 40vw;
+    justify-content: space-evenly;
+    align-items: center;
+}
+div.team_details_item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+div.team_img_wrraper{
+    width: 15vw;
+    height: 15vw;
+    overflow: hidden;
+    border-radius: 100%;
+}
+img.team_img{
+    max-width: 100%;
+    height: auto;
+    transform: scale(1.5);
+}
+h6.team_name{
+    font-family:'Poppins';
+    font-size: 1.25vw;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+p.team_member_responsobility{
+    font-family: 'Poppins';
+    font-size: 0.8vw;
+    font-weight: 300;
+}
+#offer{
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+h6#offer_title{
+    font-family:'Poppins';
+    font-size: 2.14vw;
+    font-weight: 600;
+    text-align: center;
+    position: absolute;
+    width: 80%;
+    color: #ffffff;
+}
+div#offer_content_wrraper{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+div.offer_content_item{
+    background-image: url('img/ai-technology-brain-background-digital-transformation-concept.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-left: 1px;
+    width: 30vw;
+    height: 40vw;
+    padding-bottom: 0.8vw;
+    /* aspect-ratio: 16/9; */
+}
+span.offer_content_txt{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    color: #fff;
+    font-family: 'Poppins';
+    font-size:1.7vw;
+
+}
+div#offer_img1{
+    background-image: url('img/business-hand-with-mobile-phone.jpg');
+    background-position: 20%;
+}
+div#offer_img2{
+    background-image: url('img/ai-technology-brain-background-digital-transformation-concept.jpg');
+    background-position: 75%;
+}
+div#offer_img3{
+    background-image: url('img/computer-program-code.jpg');
+}
+#contact{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100vh;
+}
+div#contact_img_wrraper{
+    width: 50%;
+    height:95%;
+    background-image: url('img/hand_shake.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 60%;
+}
+div#contact_content_wrraper{
+    display: flex;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+}
+form{
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5vw;
+    width: 50%;
+}
+form h6{
+    margin-top: 0;
+    color: #000000;
+    text-align: center;
+    position: relative;
+    top: 0;
+    font-size: 2.5vw;
+    font-weight: 600;
+}
+form input, form textarea{
+    border: 0;
+    border-bottom: 1px solid #000000;
+    margin: 30px;
+}
+form input{
+    height: 50px;
+}
+form textarea{
+    height: 250px;
+}
+div#btn_wrraper{
+    display: block;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+div#btn_wrraper button{
+    width: 50%;
+    height: 10%;
+    background-color: #fff;
+    border: 1px solid #000000;
+    border-radius: 30px;
+    font-size: 0.8vw;
+}
+footer{
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(193, 190, 186);
+    height: 3vw;
+    width: 100%;
+}
+footer h6{
+    position: absolute;
+    color: #000000;
+    bottom: 0;
+    left: 0.5vw;
+    z-index: 1;
+    margin-bottom: 0.6vw;
+}
+.footer_wrraper{
+    color: #000000;
+}
+.menu_footer{
+    background-color: #a5a5a5;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.menu_list_footer{
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    list-style-type: none;
+}
+.menu_list_footer li a{
+    font-size: 1.25vw;
+    display: inline-block;
+    text-decoration: none;
+    color: #000000;
 }
