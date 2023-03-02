@@ -352,6 +352,9 @@ img.team_img{
     height: auto;
     transform: scale(1.6);
 }
+img#yanch{
+    transform: scale(1);
+}
 h6.team_name{
     font-family:'Poppins';
     font-size: 1.5vw;
@@ -443,16 +446,17 @@ form{
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 0.5vw;
+    padding: 1vw;
+    margin-top: 1.2;
     width: 50%;
 }
 form h6{
-    margin-top: 0;
+    margin-top: 45px;
     color: #000000;
     text-align: center;
     position: relative;
     top: 0;
-    font-size: 2.5vw;
+    font-size: 2.2vw;
     font-weight: 600;
 }
 form input, form textarea{
@@ -518,9 +522,18 @@ footer h6{
     text-decoration: none;
     color: #000000;
 }
+span.btn_txt{
+    font-size: 1vw;
+}
 @media (max-width:700px) {
+    a{
+        text-decoration: none;
+    }
     .menu_list, .menu_list a{
         font-size: 3vw;
+        align-content: center;
+        justify-content: center;
+        text-align: center;
     }
     .intro_title{
         width: 90%;
@@ -587,13 +600,23 @@ footer h6{
     .technologie_btn{
         width:30vw;
         height: 5vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        padding-top: 1vw;
     }
     span#technologie_btn_txt{
-        font-size: 1.5vw;
+        position: relative;
+        height: 100%;
+        font-size: 2.2vw;
     }
     #road_map{
         display: flex;
         flex-direction: column;
+    }
+    div.road_map_content_item{
+        margin-bottom: 40px;
     }
     div#road_map_content{
         display: flex;
@@ -633,7 +656,6 @@ footer h6{
     #team{
         margin-top: 30px;
         margin-bottom: 0;
-        height: 120vw;
     }
     .team_title{
         font-size: 8vw;
@@ -641,10 +663,9 @@ footer h6{
     div.team_details_wrraper{
         flex-direction: column;
         justify-content: normal;
-        height: 60vh;
     }
     div.team_details_item{
-        height: 60vw;
+        height: 45vw;
     }
     div.team_img_wrraper{
         width: 27vw;
@@ -661,5 +682,44 @@ footer h6{
         margin: 0%;
         margin-top: 0.5vw;
         margin-bottom: 1.2vw;
+    }
+    .offer_content_item{
+        position: absolute;
+        opacity: 0;
+        transition-duration: 1s;
+        transition: ease-out;
+    }
+    .show{
+        opacity: 1;
+        transition-duration: 1s;
+        transition: ease-out;
+    }
+    h6#offer_title{
+        z-index: 1;
+        font-size: 4vw;
+        letter-spacing: 0.1vw;
+    }
+    span.offer_content_txt{
+        font-size: 3.5vw;
+    }
+    div.offer_content_item{
+        height: 65vh;
+    }
+    #btn_txt{
+        font-size: 2vw;
+    }
+    footer h6{
+        bottom: 0;
+        margin-bottom: 0;
+    }
+    .menu_list_footer li a {
+        font-size: 2.5vw;
+    }
+    div#contact_img_wrraper{
+        width: 50%;
+        background-position: 55%;
+    }
+    form input, form textarea{
+        font-size: 2vw;
     }
 }
